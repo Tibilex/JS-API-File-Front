@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,regular&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,19 +14,23 @@
             <form action="#" class="data__form">
                 <h2>request options</h2>
                 <div class="data__request-block">
-                    <p class="data__label">upload file:</p>
+                    <p class="data__label">Upload file:</p>
                     <input type="file" class="data__upload">
                     <button id="upload" class="data__upload-btn" type="submit">upload</button>
                 </div>
                 <div class="data__request-block">
                     <p class="data__label">Get all files:</p>
-                    <input type="text" class="data__name">
-                    <button id="getAll" class="data__upload-btn" type="submit">get files</button>
+                    <button id="getAll" class="data__upload-btn" type="submit">get file Names</button>
+                </div>
+                <div class="data__request-block">
+                    <p class="data__label">Get files by "Name":</p>
+                    <input type="text" class="data__name" placeholder="Enter file name">
+                    <button id="getName" class="data__upload-btn" type="submit">get files</button>
                 </div>
                 <div class="data__request-block">
                     <p class="data__label">Get files for "date added"</p>
                     <input type="date" class="data__date">
-                    <button id="addDate" class="data__upload-btn" type="submit">get files</button>
+                    <button id="getDate" class="data__upload-btn" type="submit">get files</button>
                 </div>
                 <div class="data__request-block">
                     <p class="data__label">Download selected file:</p>
@@ -35,7 +40,17 @@
             <div class="data__output-block">
                 <h2>file list</h2>
                 <select name="files" size="20" id="filelist" class="data__output">
-
+                    <option>dadadassssss.exe</option>
+                    <option>dadadaaddsss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
+                    <option>dadadassssss.exe</option>
                 </select>
             </div>
         </div>
