@@ -1,5 +1,3 @@
-let fileUploadInput = $('#upload');
-
 function cearList(){
     $('#filelist').children().remove();
 }
@@ -13,7 +11,7 @@ $('#getAll').click(function(){
         }           
     })
     .fail(() =>{
-        console.warn("GETALL REQUEST ERROR");
+        $('#filelist').append(`<option>Request ERROR</option>`); 
     });
 });
 
@@ -25,7 +23,7 @@ $('#getName').click(function(){
         $('#filelist').append(`<option>${data}</option>`);         
     })
     .fail(() =>{
-        console.warn("GETALL REQUEST ERROR");
+        $('#filelist').append(`<option>Request ERROR</option>`); 
     });
 });
 
@@ -37,7 +35,7 @@ $('#getDate').click(function(){
         $('#filelist').append(`<option>${data}</option>`);         
     })
      .fail(() =>{
-        console.warn("GETALL REQUEST ERROR");
+        $('#filelist').append(`<option>Request ERROR</option>`); 
     });
 });
 
@@ -62,4 +60,46 @@ $('#upload').click(function(){
             $('#filelist').append(`<option>Upload ERROR</option>`); 
         }
         });
+});
+/*
+$('#download').click(function(){
+    const filelist = document.querySelector('#filelist');
+    let value = filelist.options[filelist.selectedIndex].text;
+    $.ajax({
+        url: 'https://localhost:7121/controller/GetFile?fileName=' + value,
+        type: 'GET',
+        success: function(response){
+            let blob = new Blob([response], {type: 'text/plain'});
+            let temp = $('<a></a>');
+            temp.download = fileName;
+            temp.href = window.URL.createObjectURL(blob);
+            temp.click();
+        },
+        error: (function(){
+            $('#filelist').append(`<option>Download ERROR</option>`); 
+        })
+    });
+});
+*/
+$('#download').on('click', function () {
+    const filelist = document.querySelector('#filelist');
+    let value = filelist.options[filelist.selectedIndex].text;
+
+    $.ajax({
+        url: 'https://localhost:7121/controller/DownloadFile?name=' + value,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = value;
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
 });
